@@ -1,0 +1,43 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+aside,
+section.store {
+  float: left;
+}
+aside {
+  width: auto;
+  height: auto;
+  border: 1px solid black;
+  display: table;
+  padding: 0px 10px 10px 10px;
+}
+aside ul {
+  list-style-type: none;
+  text-align: left;
+}
+.gems {
+  margin-left: 100px;
+  width: 600px;
+  margin-top: 20px;
+}
+section .gem {
+  display: inline-block;
+  height: auto;
+  width: 150px;
+  margin-top: 50px;
+  margin-right:20px;
+}
+
+.gem input {
+  width: 100px;
+}
+table {
+  text-align: center;
+}
+.remove {
+  color: red;
+  cursor: pointer;
+}
