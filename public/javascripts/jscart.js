@@ -22,7 +22,6 @@ var jsCart = function (sessionStorage) {
   //check to see if item exists. Used before adding or removing items from sessionStorage.
   //Save item location if found. This prevents searching for it a second time unnecessarily.
   var itemLocation = 0;
-
   function itemExists(productId, cart) {
     for (var i = 0; i < cart.length; i++) {
       if (cart[i].id === productId) {
