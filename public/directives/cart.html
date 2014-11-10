@@ -1,0 +1,21 @@
+    <table>
+       <tr>
+         <th>Item</th>
+         <th>Price</th>
+         <th>Quantity</th>
+         <th>Sub-total</th>
+       </tr>
+        <tr id="cartItem" ng-repeat="item in cart">
+          <td>{{item.item}}</td>
+          <td>{{item.price}}</td>
+          <td>{{item.quantity}}</td>
+          <td>${{(item.quantity * item.price).toFixed(2)}}</td>
+          <td ng-click="storeCtrl.removeItem(item.id)" class="remove" title="remove">X</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>Total:</td>
+          <td>${{cartTotal}}</td>
+        </tr>
+     </table>

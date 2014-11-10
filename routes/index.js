@@ -6,5 +6,8 @@ router.get('/', function(req, res) {
   res.render('index.html');
 });
 
+router.get('/check-out', function(req,res){
+  res.render('checkout.html');
+});
 
 module.exports = router;

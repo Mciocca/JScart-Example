@@ -5,31 +5,10 @@
     <link rel="stylesheet" href="stylesheets/style.css">
   </head>
   <body ng-controller="StoreController as storeCtrl">
-  
-   <aside ng-controller="CartController as cartCtrl">
-     <h4>You have {{cartSize}} items in your cart</h4>
-      <table>
-       <tr>
-         <th>Item</th>
-         <th>Price</th>
-         <th>Quantity</th>
-         <th>Sub-total</th>
-       </tr>
-        <tr id="cartItem" ng-repeat="item in cart">
-          <td>{{item.item}}</td>
-          <td>{{item.price}}</td>
-          <td>{{item.quantity}}</td>
-          <td>{{(item.quantity * item.price).toFixed(2)}}</td>
-          <td ng-click="cartCtrl.removeItem(item.id)" class="remove" title="remove">X</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td>Total:</td>
-          <td>{{cartTotal}}</td>
-        </tr>
-     </table>
-   </aside>
+  <aside>
+   <h4>You have {{cartSize}} items in your cart</h4>
+   <cart></cart>
+  </aside>
    
    <section>
      <h3>What are you looking for today?</h3>
@@ -52,7 +31,6 @@
     
     <script src='javascripts/jscart.js'></script>
     <script src='bower_components/angular/angular.min.js'></script>
-    <script src='controllers/gems.js'></script>
-    <script src='controllers/cart.js'></script>
+    <script src='controllers/store.js'></script>
   </body>
 </html>
