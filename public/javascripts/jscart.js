@@ -1,7 +1,7 @@
 /*
    This library uses sessionStorage to create a simple shopping cart on the user's browser.
    It is highly recommended that you check prices against your database before
-   allowing a transaction to complete. Any differences should be alerted to the user before completing.
+   allowing a transaction to complete.
    Product function arguments should be a unique identifer to the item being added to the cart.
 
    sessionStorage is widely supported by modern browsers, and is supported by IE as far back as IE8.
