@@ -1,6 +1,6 @@
 (function(){
   jsCart.init();
-  var app = angular.module('gemStore',[]).directive('cart', function(){
+  var storeControllers = angular.module('storeControllers',[]).directive('cart', function(){
    return {
      restrict: 'E',
      transclude: true,
@@ -8,25 +8,12 @@
    }
   });
   
-  app.controller('StoreController', ['$http', '$scope', function($http, $scope){
+  storeControllers.controller('CartController', ['$http', '$scope', function($http, $scope){
     //hide itemList until populated
-    $scope.itemList = false;
     $scope.cartSize = jsCart.getCartSize();
     $scope.cart = jsCart.getAllItems();
     $scope.cartTotal = jsCart.total();
-    
-    
-    this.getGems = function(){    
-      $http.get('/api/gems', {cache: true}).success(function(data){
-        $scope.itemList = data;   
-      });
-    }
-    
-    this.getMinerals = function(){    
-      $http.get('/api/minerals', {cache: true}).success(function(data){
-        $scope.itemList = data;
-      });
-    }
+    $scope.cartVisible = false;
     
     this.addItemToCart = function(item){
       if(typeof item.quantity === 'number' && item.quantity > 0){
@@ -43,6 +30,10 @@
       updateCart();
     }
     
+    this.toggleCart = function(){
+      $scope.cartVisible = !$scope.cartVisible;
+    }
+    
     //helper functions
     function updateCart(){
       $scope.cart = jsCart.getAllItems();
@@ -50,6 +41,20 @@
       $scope.cartTotal = jsCart.total();
     }
      
+  }]);
+    
+ //Products controller    
+  storeControllers.controller('ProductController', ['$http', '$scope', function($http, $scope){
+     $scope.itemList = getProducts();
+     $scope.category = ''; 
+              
+    function getProducts(){
+      $scope.category = document.URL.split('/')[4];
+      $http.get('/api/'+$scope.category, {cache: true}).success(function(data){
+        $scope.itemList = data; 
+      });
+    }
+      
   }]);
 
 })();

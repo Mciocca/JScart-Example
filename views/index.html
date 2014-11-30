@@ -1,36 +1,39 @@
 <!doctype html>
 <html ng-app='gemStore'>
-  <head>
+
+<head>
     <title>JsCart Demo Store</title>
     <link rel="stylesheet" href="stylesheets/style.css">
-  </head>
-  <body ng-controller="StoreController as storeCtrl">
-  <aside>
-   <h4>You have {{cartSize}} items in your cart</h4>
-   <cart></cart>
-  </aside>
+</head>
+
+<body ng-controller="CartController as cartCtrl">
+    <aside class="modal" ng-show="cartVisible">
+      <div class="cart">
+        <h4>You have {{cartSize}} items in your cart</h4>
+        <cart></cart>
+      </div>
+   </aside>
    
-   <section>
-     <h3>What are you looking for today?</h3>
-     <a href="#minerals" ng-click="storeCtrl.getMinerals()">Minerals</a>
-     <a href="#gems" ng-click="storeCtrl.getGems()">Gems</a>
-   </section>
-   
-    <section class="store" ng-show='itemList'>
-       <h3>Search Gems</h3>
-      <input type="text" ng-model="storeFilter"/>
-      <br/>
-      <div class="gem" ng-repeat="item in itemList | filter: storeFilter | orderBy: 'price' ">
-        <div class="gemName">{{item.name}}</div>
-        <div class="gemColor">{{item.description}}</div>
-        <div class="gemPrice">${{item.price.toFixed(2)}}</div>
-        <input type="number" placeholder="quantity" ng-model="item.quantity" min="0"/>
-        <button ng-click="storeCtrl.addItemToCart(item)">Add to cart</button>
-      </div>  
-    </section>
-    
+   <nav>
+     <ul>
+      <li>
+        <a class="ng-link" ng-click="cartCtrl.toggleCart();">View Cart</a>
+        <span id="cart-count">{{cartSize}}</span>
+       </li>
+      </ul>
+    </nav>
+
+
+
+    <div ng-view>
+
+    </div>
+
     <script src='javascripts/jscart.js'></script>
     <script src='bower_components/angular/angular.min.js'></script>
+    <script src='bower_components/angular-route/angular-route.min.js'></script>
+    <script src='app.js'></script>
     <script src='controllers/store.js'></script>
-  </body>
+</body>
+
 </html>

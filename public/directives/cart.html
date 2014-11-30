@@ -7,10 +7,10 @@
        </tr>
         <tr id="cartItem" ng-repeat="item in cart">
           <td>{{item.item}}</td>
-          <td>{{item.price}}</td>
+          <td>{{item.price | currency}}</td>
           <td>{{item.quantity}}</td>
-          <td>${{(item.quantity * item.price).toFixed(2)}}</td>
-          <td ng-click="storeCtrl.removeItem(item.id)" class="remove" title="remove">X</td>
+          <td>{{(item.quantity * item.price) | currency}}</td>
+          <td ng-click="cartCtrl.removeItem(item.id)" class="remove" title="remove">X</td>
         </tr>
         <tr>
           <td></td>
@@ -19,3 +19,5 @@
           <td>${{cartTotal}}</td>
         </tr>
      </table>
+     <a class="ng-link" ng-click='cartCtrl.toggleCart();'>Close</a>
+     <a href="/check-out">Check out</a>

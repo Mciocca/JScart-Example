@@ -9,7 +9,7 @@
    The cart expects prices to be saved as decimals. Correct rounding and formatting should be handled by the server before inserting it
    into your html.
 
-   The library was built with the idea of using data attributes and click events to pass data to it, however there will be many other effective solutions as well.
+   The library was built with the idea of using data attributes and click events to pass data to the cart, however there will be many other effective solutions as well.
 
    IMPORTANT : This was built as a learning exercise, and may not be appropriate for a production application.
 
@@ -41,12 +41,14 @@ var jsCart = function (sessionStorage) {
   };
 
   return {
-    //create an empty cart in sessionStorage.
+    //create an empty cart in sessionStorage. Takes an optional callback
     init: function (callback) {
-      if (!sessionStorage.getItem('jsCart')) {
+      if(!sessionStorage.getItem('jsCart')) {
         sessionStorage.setItem('jsCart', '[]');
       }
-      callback;
+      if(typeof callback === 'function'){
+        callback();
+      };
     },
     //this function should be modified to accept as many parameters as needed
     //or this could be modified to take an object, and expect that object to have an id key.
@@ -84,8 +86,8 @@ var jsCart = function (sessionStorage) {
 
     //get total for all products in the cart
     total: function () {
-      var total = 0;
-      var cart = getCart();
+      var total = 0,
+      cart = getCart();
       for (var i = 0; i < cart.length; i++) {
         total += (cart[i].quantity * cart[i].price);
       }
@@ -94,8 +96,8 @@ var jsCart = function (sessionStorage) {
 
     //get the total number of products in the cart
     getCartSize: function () {
-      var cart = getCart();
-      var totalItems = 0;
+      var cart = getCart(),
+      totalItems = 0;
       for (var i = 0; i < cart.length; i++) {
         totalItems += parseInt(cart[i].quantity);
       }
