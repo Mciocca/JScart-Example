@@ -1,36 +1,40 @@
-module.exports = function(grunt){
+module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
-    uglify: {
-        build: {
-            src: 'js/round.js',
-            dest: 'js/round.min.js'
-        }
+    sass: {
+      options: {
+        includePaths: ['bower_components/foundation/scss']
+      },
+      dist: {
+        options: {
+          outputStyle: 'nested'
+        },
+        files: {
+          'public/stylesheets/css/app.css': 'public/stylesheets/sass/app.scss'
+        }        
+      }
     },
-
+      
     cssmin: {
-        minify: {
-            src: 'css/round.css',
-            dest: 'css/round.min.css'
-        }
-
+      minify: {
+        src: 'public/stylesheets/css/app.css',
+        dest: 'public/stylesheets/css/app.min.css'
+      }
     },
 
     watch: {
-        scipts: {
-            files: ['js/*.js', 'css/*.css'],
-            tasks: ['uglify', 'cssmin'],
-            options: {
-                spawn: false
-            },
-        }
+      css:{
+        files: ['public/stylesheets/sass/*.scss'],
+        tasks: ['sass', 'cssmin']
+      }
     }
-
   });
 
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.registerTask('default', ['uglify', 'watch']);
-};
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
+
+  grunt.registerTask('build', ['sass']);
+  grunt.registerTask('default', ['build','watch','cssmin']);
+}

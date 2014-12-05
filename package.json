@@ -18,6 +18,10 @@
   },
   "devDependencies": {
     "ejs": "~1.0.0",
-    "nodemon": "~1.2.1"
+    "nodemon": "~1.2.1",
+    "node-sass": "~1.2.3",
+    "grunt-sass": "~0.16.1",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-contrib-cssmin": "~0.10.0"
   }
 }

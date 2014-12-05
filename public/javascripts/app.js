@@ -1,3 +1,4 @@
+$(document).foundation();
 (function(){
   var app = angular.module('gemStore',['ngRoute', 'storeControllers']);
     

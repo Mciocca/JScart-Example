@@ -3,37 +3,46 @@
 
 <head>
     <title>JsCart Demo Store</title>
-    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="stylesheet" href="stylesheets/css/app.min.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="bower_components/modernizr/modernizr.js"></script>
 </head>
 
 <body ng-controller="CartController as cartCtrl">
-    <aside class="modal" ng-show="cartVisible">
+    
+  <div id="cartModal" class="reveal-modal row" data-reveal>
       <div class="cart">
         <h4>You have {{cartSize}} items in your cart</h4>
         <cart></cart>
+        <a class="close-reveal-modal">&#215;</a>
       </div>
-   </aside>
+  </div>
    
-   <nav>
-     <ul>
-      <li>
-        <a class="ng-link" ng-click="cartCtrl.toggleCart();">View Cart</a>
-        <span id="cart-count">{{cartSize}}</span>
+   <nav class="top-bar" data-topbar role = "navigation">
+   <ul class="title-area">
+     <li class="name">
+       <h1><a href="#">Gem and Mineral Store</a></h1>
+     </li>
+   </ul>
+ 
+     <ul class="right">
+      <li class="large-4 medium-4">
+        <a class="ng-link" data-reveal-id="cartModal"><i class="foundicon-cart"></i></a>
+        <span id="cart-count" ng-show="cartSize">{{cartSize}}</span>
        </li>
       </ul>
     </nav>
 
-
-
-    <div ng-view>
-
-    </div>
-
+    <div ng-view></div>
+    
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/foundation/js/foundation.min.js"></script>
     <script src='javascripts/jscart.js'></script>
     <script src='bower_components/angular/angular.min.js'></script>
     <script src='bower_components/angular-route/angular-route.min.js'></script>
-    <script src='app.js'></script>
-    <script src='controllers/store.js'></script>
+    <script src='javascripts/app.js'></script>
+    <script src='javascripts/store-controller.js'></script>
 </body>
 
 </html>

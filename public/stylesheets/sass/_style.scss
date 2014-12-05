@@ -1,0 +1,41 @@
+//general
+
+.foundicon-remove{
+  cursor:pointer;
+}
+
+.home{
+  text-align: center;
+  .button{display:inline-block !important;}
+}
+//nav styles
+#cart-count{
+  background-color:red;
+  color:white;
+  height:25px;
+  width:25px;
+  border-radius: 100%;
+  display:block;
+  position:absolute;
+  top:0;
+  right: 125px;
+  text-align:center;
+}
+nav .foundicon-cart{
+  color:white;
+  font-size:35px;
+  margin-right:150px;
+}
+//cart styles
+
+.cart{
+  text-align:center;
+  table{
+    margin:0 auto;
+    td{text-align: center;}
+  }
+}
+
+//items styles
+
+.item:last-child{float:left !important;}

@@ -8,8 +8,8 @@
    }
   });
   
-  storeControllers.controller('CartController', ['$http', '$scope', function($http, $scope){
-    //hide itemList until populated
+    //cart controller
+  storeControllers.controller('CartController', ['$scope', function($scope){
     $scope.cartSize = jsCart.getCartSize();
     $scope.cart = jsCart.getAllItems();
     $scope.cartTotal = jsCart.total();
