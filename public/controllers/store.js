@@ -1,5 +1,6 @@
 (function(){
-  jsCart.init();
+    jsCart.init('hello');
+jsCart.test('hi');
   var storeControllers = angular.module('storeControllers',[]).directive('cart', function(){
    return {
      restrict: 'E',
@@ -16,6 +17,7 @@
     $scope.cartVisible = false;
     
     this.addItemToCart = function(item){
+    
       if(typeof item.quantity === 'number' && item.quantity > 0){
         jsCart.addToCart(item._id, item.name, item.quantity, item.price.toFixed(2));
         updateCart();

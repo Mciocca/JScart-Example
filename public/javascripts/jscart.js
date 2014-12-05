@@ -45,10 +45,12 @@ var jsCart = function (sessionStorage) {
     init: function (callback) {
       if(!sessionStorage.getItem('jsCart')) {
         sessionStorage.setItem('jsCart', '[]');
+        console.log(typeof callback);
+        if(typeof callback === 'function'){
+          callback();
+        };
       }
-      if(typeof callback === 'function'){
-        callback();
-      };
+     
     },
     //this function should be modified to accept as many parameters as needed
     //or this could be modified to take an object, and expect that object to have an id key.
@@ -112,3 +114,4 @@ var jsCart = function (sessionStorage) {
     //end of return object
   }
 }(sessionStorage);
+
