@@ -1,4 +1,4 @@
-<table class>
+<table ng-hide="response">
   <tr>
     <th>Item</th>
     <th>Price</th>
@@ -10,7 +10,7 @@
     <td>{{item.price | currency}}</td>
     <td>{{item.quantity}}</td>
     <td>{{(item.quantity * item.price) | currency}}</td>
-    <td ng-click="cartCtrl.removeItem(item.id)" class="remove ng-link" title="remove"><i class="foundicon-remove"></i></td>
+    <td ng-click="cartCtrl.removeItem(item.id)" class="remove ng-link"><i class="foundicon-remove"></i></td>
   </tr>
   <tr>
     <td></td>
@@ -19,4 +19,26 @@
     <td>{{cartTotal | currency}}</td>
   </tr>
 </table>
-<a href="/check-out" class="button alert">Check out</a>
+
+<!-- table using response data after form ppost -->
+<table  ng-show = "response">
+  <tr>
+    <th>Item</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th>Sub-total</th>
+  </tr>
+  <tr id="cartItem" ng-repeat="item in response.cart">
+    <td>{{item.item}}</td>
+    <td>{{item.price | currency}}</td>
+    <td>{{item.quantity}}</td>
+    <td>{{(item.quantity * item.price) | currency}}</td>
+    <td ng-click="cartCtrl.removeItem(item.id)" class="remove ng-link"><i class="foundicon-remove"></i></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td>Total:</td>
+    <td>{{response.total | currency}}</td>
+  </tr>
+</table>

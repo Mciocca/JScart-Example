@@ -2,47 +2,118 @@
 <html ng-app='gemStore'>
 
 <head>
-    <title>JsCart Demo Store</title>
-    <link rel="stylesheet" href="stylesheets/css/app.min.css">
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="bower_components/modernizr/modernizr.js"></script>
+  <title>JsCart Demo Store</title>
+  <link rel="stylesheet" href="stylesheets/css/app.min.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="bower_components/modernizr/modernizr.js"></script>
 </head>
 
 <body ng-controller="CartController as cartCtrl">
-    
-  <div id="cartModal" class="reveal-modal row" data-reveal>
-      <div class="cart">
-        <h4>You have {{cartSize}} items in your cart</h4>
-        <cart></cart>
-        <a class="close-reveal-modal">&#215;</a>
-      </div>
-  </div>
-   
-   <nav class="top-bar" data-topbar role = "navigation">
-   <ul class="title-area">
-     <li class="name">
-       <h1><a href="#">Gem and Mineral Store</a></h1>
-     </li>
-   </ul>
- 
-     <ul class="right">
-      <li class="large-4 medium-4">
-        <a class="ng-link" data-reveal-id="cartModal"><i class="foundicon-cart"></i></a>
-        <span id="cart-count" ng-show="cartSize">{{cartSize}}</span>
-       </li>
-      </ul>
-    </nav>
+  
 
-    <div ng-view></div>
+  <div id="cartModal" class="reveal-modal row" data-reveal>
+    <div class="cart">
+      <h4>You have {{cartSize}} items in your cart</h4>
+      <cart></cart>
+      <a class="close-reveal-modal">&#215;</a>
+      <a data-reveal-id="checkoutModal" class="button alert">Check out</a>
+      <p>Note: Please ensure the above cart is correct before checking out</p>
+    </div>
+  </div>
+  
+  <section id="order-processing" ng-controller="FormController as formCtrl"> 
+  <!-- form modal -->
+  <div id="checkoutModal" class="reveal-modal"  data-reveal>
+    <h2>Checkout</h2>
+    <p> Your cart has {{cartSize}} items for a total of {{cartTotal | currency}}</p>
+    <p>This is a demo, no need to post real data!</p>
     
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="bower_components/foundation/js/foundation.min.js"></script>
-    <script src='javascripts/jscart.js'></script>
-    <script src='bower_components/angular/angular.min.js'></script>
-    <script src='bower_components/angular-route/angular-route.min.js'></script>
-    <script src='javascripts/app.js'></script>
-    <script src='javascripts/store-controller.js'></script>
+    <form class="row" >
+     
+      <label class="small-12">Name</label>
+      <input class="small-12" type="text" ng-model="formData.name">
+      
+      <label class="small-12">Street Address</label>
+      <input class="small-12" type="text" ng-model="formData.street">
+      
+      <label class="small-4">Zip Code</label>
+      <input class="small-4"type="text" ng-model="formData.zip">
+      
+      <label>City</label>
+      <input type="text" ng-model="formData.city">
+      
+      <label> Credit Card </label>
+      <input type="text" ng-model="formData.payment">
+      
+    </form>
+    
+    <button data-reveal-id="successModal" ng-click="formCtrl.postForm()" class="button">Finish order</button>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+  
+  <!-- success modal -->
+  <div id="successModal" class="reveal-modal" data-reveal>
+     <h2 ng-hide="response"> Please Wait...</h2>
+     <h2>Your order has been placed!</h2>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Address</th>
+          <th>City</th>
+        </tr>
+        <tr>
+          <td>{{response.form.name}}</td>
+          <td>{{response.form.street}}</td>
+          <td>{{response.form.city}}</td>
+        </tr>
+      </table>
+      <h3>Order Summary:</h3>
+      <cart></cart>
+     <a class="close-reveal-modal">&#215;</a>
+  </div>
+  
+</section>
+  
+  <nav class="top-bar" data-topbar role="navigation">
+    <ul class="title-area">
+      <li class="name">
+        <h1><a href="#">Gem and Mineral Store</a></h1>
+      </li>
+      <li class="toggle-topbar menu-icon">
+        <a><span><span class="cart-count right" ng-show="cartSize">{{cartSize}}</span></span></a>
+      </li>
+    </ul>
+    <section class="top-bar-section">
+      <ul class="right">
+        <li><a href="/#/gems">Gems</a></li>
+        <li class="divider"></li>
+        <li><a href="/#/minerals">Minerals</a>
+        </li>
+        <li class="divider"></li>
+        <li class="hide-for-small-only">
+          <a class="ng-link" data-reveal-id="cartModal"><i class="foundicon-cart"></i></a>
+          <span class="cart-count" ng-show="cartSize">{{cartSize}}</span>
+        </li>
+        <li class="show-for-small-only"> 
+          <a class="ng-link" data-reveal-id="cartModal">
+            Cart
+            <span class="cart-count right" ng-show="cartSize">{{cartSize}}</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+  </nav>
+
+  <div ng-view></div>
+
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/foundation/js/foundation.min.js"></script>
+  <script src='javascripts/jscart.js'></script>
+  <script src='bower_components/angular/angular.min.js'></script>
+  <script src='bower_components/angular-route/angular-route.min.js'></script>
+  <script src='javascripts/app.js'></script>
+  <script src='javascripts/store-controller.js'></script>
 </body>
 
 </html>

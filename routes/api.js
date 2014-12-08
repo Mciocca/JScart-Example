@@ -25,4 +25,14 @@ router.get('/minerals', function(req, res) {
   });
 });
 
+/*
+  This is a shortcut since this is not a real e-commerce site.
+  In  a real site payment processing and checking items recieved against items in
+  your database would happen here. 
+*/
+router.post('/process-order', function(req, res) {
+  console.log(req.body);
+  res.send(req.body);
+});
+
 module.exports = router;

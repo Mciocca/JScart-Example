@@ -6136,22 +6136,35 @@ th.hide-for-touch {
   .home .button {
     display: inline-block !important; }
 
-#cart-count {
+.cart-count {
   background-color: red;
   color: white;
-  height: 25px;
-  width: 25px;
   border-radius: 100%;
   display: block;
-  position: absolute;
-  top: 0;
-  right: 125px;
-  text-align: center; }
+  text-align: center;
+  height: 25px;
+  width: 25px; }
 
-nav .foundicon-cart {
+.foundicon-cart {
   color: white;
-  font-size: 35px;
-  margin-right: 150px; }
+  font-size: 35px; }
+
+@media only screen and (max-width: 40em) {
+  .cart-count {
+    line-height: 2; }
+ }
+
+nav .right li.hide-for-small-only {
+  background: transparent; }
+  nav .right li.hide-for-small-only a {
+    background: transparent !important; }
+  nav .right li.hide-for-small-only .cart-count {
+    position: absolute;
+    top: 0;
+    right: 0; }
+nav li.show-small-only .cart-count {
+  height: 15px;
+  width: 15px; }
 
 .cart {
   text-align: center; }
@@ -6159,6 +6172,19 @@ nav .foundicon-cart {
     margin: 0 auto; }
     .cart table td {
       text-align: center; }
+  .cart a.button {
+    margin-top: 20px; }
+
+@media only screen and (max-width: 40em) {
+  #cartModal {
+    padding: 0; }
+ }
+
+.store h3 {
+  text-transform: capitalize; }
 
 .item:last-child {
   float: left !important; }
+
+#successModal table .remove {
+  display: none; }

@@ -1,17 +1,15 @@
 /*
    This library uses sessionStorage to create a simple shopping cart on the user's browser.
-   It is highly recommended that you check prices against your database before
-   allowing a transaction to complete.
-   Product function arguments should be a unique identifer to the item being added to the cart.
 
-   sessionStorage is widely supported by modern browsers, and is supported by IE as far back as IE8.
-
-   The cart expects prices to be saved as decimals. Correct rounding and formatting should be handled by the server before inserting it
-   into your html.
-
-   The library was built with the idea of using data attributes and click events to pass data to the cart, however there will be many other effective solutions as well.
-
-   IMPORTANT : This was built as a learning exercise, and may not be appropriate for a production application.
+   sessionStorage is widely supported by modern browsers, and is supported by IE8+.
+   sessionStorage is currently NOT supported b Opera Mini.
+   
+   IMPORTANT:
+   Because the shopping cart is client side, you must assume that the user has modified
+   the cart in sessionStorage before processing their order. It is important to have the user
+   check their cart before processing the sale, and not to trust the prices that are currently
+   in the cart. The cart should be used to store item information to show the user. Use the item IDs 
+   saved to the cart to process the order only after the user confirms their order is correct.
 
    Created by Michael Ciocca
    http://github.com/mciocca
@@ -45,15 +43,13 @@ var jsCart = function (sessionStorage) {
     init: function (callback) {
       if(!sessionStorage.getItem('jsCart')) {
         sessionStorage.setItem('jsCart', '[]');
-        console.log(typeof callback);
         if(typeof callback === 'function'){
           callback();
         };
       }
-     
     },
-    //this function should be modified to accept as many parameters as needed
-    //or this could be modified to take an object, and expect that object to have an id key.
+    
+    //adds items to the cart
     addToCart: function (productId, product, amount, cost) {
       var cart = getCart();
       if (itemExists(productId, cart)) {
@@ -109,6 +105,11 @@ var jsCart = function (sessionStorage) {
     //returns cart as an array of javascript objects
     getAllItems: function () {
       return getCart();
+    },
+    
+    removeAllItems : function(){
+      sessionStorage.removeItem('jsCart');
+      this.init();
     }
 
     //end of return object
