@@ -31,8 +31,6 @@
       updateCart();
     }
     
-    this.emptyCart
-    
     //no longer in use, foundation modal handles showing cart.
     this.toggleCart = function(){
       $scope.cartVisible = !$scope.cartVisible;
