@@ -1,4 +1,4 @@
 { "_id" : { "$oid" : "547940c9b35a8dbc6350fb32" }, "name" : "Azurite", "price" : 19.99, "description" : "Blue and shiny" }
 { "_id" : { "$oid" : "547940f7b35a8dbc6350fb33" }, "name" : "Aragonite", "price" : 19.99, "description" : "Orange, usually shaped like a column" }
 { "_id" : { "$oid" : "54794117b35a8dbc6350fb34" }, "name" : "Axinite", "price" : 15.75, "description" : "Rootbeer colored" }
-{ "_id" : { "$oid" : "54794193b35a8dbc6350fb35" }, "name" : "Kidwellite", "price" : 15.75, "description" : "Orange and red spherical gradient" }
+{ "_id" : { "$oid" : "54794193b35a8dbc6350fb35" }, "name" : "Kidwellite", "price" : 24.75, "description" : "Orange and red spherical gradient" }

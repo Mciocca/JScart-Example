@@ -1,5 +1,5 @@
-.gitignore
-npm-debug.log
+/.gitignore
+/npm-debug.log
 /bower_components
 /node_modules
 /data
