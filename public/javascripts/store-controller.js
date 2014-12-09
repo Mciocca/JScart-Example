@@ -61,6 +61,7 @@
     
   }]);
   
+  //form controller
   storeControllers.controller('FormController', ['$http', '$scope', function($http, $scope){
    $scope.formData = {};
    $scope.response = {};
@@ -77,11 +78,17 @@
        }).success(function(data){
          $scope.response = data;
          $scope.formData = {};
-         jsCart.removeAllItems();
-         $scope.$parent.cartSize = 0;
+         resetAfterOrder();
      });
     }
    }
+   
+   function resetAfterOrder(){
+     jsCart.removeAllItems();
+     $scope.$parent.cartSize = 0;
+     $scope.$parent.cart = jsCart.getAllItems();
+   }
+    
   }]);
 
 })();

@@ -28,7 +28,7 @@ router.get('/minerals', function(req, res) {
 /*
   This is a shortcut since this is not a real e-commerce site.
   In  a real site payment processing and checking items recieved against items in
-  your database would happen here. 
+  your database would happen here. This simply returns the sent info back to the client.
 */
 router.post('/process-order', function(req, res) {
   console.log(req.body);

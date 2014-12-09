@@ -1,0 +1,3 @@
+{ "_id" : { "$oid" : "54793e8db35a8dbc6350fb2f" }, "name" : "Ruby", "price" : 29.99, "description" : "It's red!" }
+{ "_id" : { "$oid" : "54793eb1b35a8dbc6350fb30" }, "name" : "Opal", "price" : 59.99, "description" : "It's blue and round!" }
+{ "_id" : { "$oid" : "54793ec6b35a8dbc6350fb31" }, "name" : "Jade", "price" : 19.99, "description" : "It's green!" }
