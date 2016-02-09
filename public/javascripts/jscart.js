@@ -13,7 +13,6 @@
 
    Created by Michael Ciocca
    http://github.com/mciocca
-   License: MIT
  */
 
 var jsCart = function (sessionStorage) {
